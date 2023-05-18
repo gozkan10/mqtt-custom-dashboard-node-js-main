@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
+const fs = require('fs');
 const port = 3000;
 
 // load dotenv to read environment variables
@@ -26,12 +27,20 @@ app.post('/api/messages', (req, res) => {
   const message = req.body.message;
   console.log('Alınan test:', req.body.values[0].id);
   console.log('Alınan test:', req.body.values[0].v);
+  console.log('Alınan test:', req.body.values[1].id);
+  console.log('Alınan test:', req.body.values[1].v);
   //console.log('Alınan mesaj:', message);
 
   // İşlemleriniz burada gerçekleştirilebilir
 
   res.send('POST isteği başarıyla karşılandı');
 });
+
+// txt yazdırma
+const jsonVerisi = req.body.message;
+const metin = JSON.stringify(jsonVerisi);
+fs.writeFileSync('/Users/kullanici/Desktop/opcVeri.txt', metin);
+
 
 
 
