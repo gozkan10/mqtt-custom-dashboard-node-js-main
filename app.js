@@ -34,9 +34,9 @@ app.post('/api/messages', (req, res) => {
   // İşlemleriniz burada gerçekleştirilebilir
 
   // txt yazdırma
-  const jsonVerisi = req.body.message;
+  const jsonVerisi = req.body;
   const metin = JSON.stringify(jsonVerisi);
-  fs.writeFileSync('/Users/kullanici/Desktop/opcVeri.txt', metin);
+  fs.writeFileSync('/Users/hasanaydogmus/Desktop/opcVeri.txt', metin);
 
 
   res.send('POST isteği başarıyla karşılandı');
