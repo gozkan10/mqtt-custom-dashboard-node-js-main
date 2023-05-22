@@ -21,14 +21,19 @@ const dashboardRouter = require("./routes/dashboard");
 app.use(bodyParser.json());
 app.use(cors()); // CORS'u kullanmak için middleware'ı uygulayın
 
+function testCheck(){
 
-
+  
 app.post('/api/messages', (req, res) => {
   const message = req.body.message;
-  console.log('Alınan test:', req.body.values[0].id);
-  console.log('Alınan test:', req.body.values[0].v);
   console.log('Alınan test:', req.body.values[1].id);
   console.log('Alınan test:', req.body.values[1].v);
+  console.log('Alınan test:', req.body.values[2].id);
+  console.log('Alınan test:', req.body.values[2].v);
+  console.log('Alınan test:', req.body.values[3].id);
+  console.log('Alınan test:', req.body.values[3].v);
+  console.log('Alınan test:', req.body.values[4].id);
+  console.log('Alınan test:', req.body.values[4].v);
   //console.log('Alınan mesaj:', message);
 
   // İşlemleriniz burada gerçekleştirilebilir
@@ -36,11 +41,15 @@ app.post('/api/messages', (req, res) => {
   // txt yazdırma
   const jsonVerisi = req.body;
   const metin = JSON.stringify(jsonVerisi);
-  fs.writeFileSync('/Users/hasanaydogmus/Desktop/opcVeri.txt', metin);
+  fs.appendFileSync('/Users/hasanaydogmus/Desktop/opcVeri.txt', metin);
 //rep
 
   res.send('POST isteği başarıyla karşılandı');
+
 });
+return jsonVerisi;
+}
+
 
 
 
