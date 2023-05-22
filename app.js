@@ -21,9 +21,6 @@ const dashboardRouter = require("./routes/dashboard");
 app.use(bodyParser.json());
 app.use(cors()); // CORS'u kullanmak için middleware'ı uygulayın
 
-function testCheck(){
-
-  
 app.post('/api/messages', (req, res) => {
   const message = req.body.message;
   console.log('Alınan test:', req.body.values[1].id);
@@ -47,8 +44,7 @@ app.post('/api/messages', (req, res) => {
   res.send('POST isteği başarıyla karşılandı');
 
 });
-return jsonVerisi;
-}
+
 
 
 
