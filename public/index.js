@@ -957,3 +957,5 @@ function handleDeviceChange(e) {
 
   // mqttService.subscribe(mqttTopic);
 //}
+//grkm
+//haydogmus
