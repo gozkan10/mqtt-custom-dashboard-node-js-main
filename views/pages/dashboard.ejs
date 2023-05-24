@@ -9,6 +9,19 @@
       href="https://fonts.googleapis.com/icon?family=Material+Symbols+Sharp"
       rel="stylesheet"
     />
+    <style>
+      .gaugeGorkem{
+        float:left;
+        flex-direction: column;
+        padding: 25px;
+        margin-left:25px !important;
+        margin-top:25px !important;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 1px 12px 0 rgba(0, 0, 0, 0.19);
+        width: 23%;
+
+      };
+    </style>
     <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
     <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
     <link rel="stylesheet" href="./style.css" />
@@ -90,15 +103,33 @@
           <!-- End of altitude -->
         </div>
         <!-- End of Insights -->
-        <div class="histories">
-          <h2>Historical Charts</h2>
-          <div class="history-charts">
-            <div id="temperature-history" class="history-divs"></div>
-            <div id="humidity-history" class="history-divs"></div>
-            <div id="pressure-history" class="history-divs"></div>
-            <div id="altitude-history" class="history-divs"></div>
+        <div class="gauge-charts">
+          <h2 style="margin-top:10px; color: blue;">Gauge Charts </h2>
+          <div class="item gaugeGorkem">
+            <div id="temperature-gauge"></div>
           </div>
+          <div class="item gaugeGorkem">
+            <div id="humidity-gauge"></div>
+          </div>
+          <div class="item gaugeGorkem">
+            <div id="pressure-gauge"></div>
+          </div>
+          <div class="item gaugeGorkem">
+            <div id="altitude-gauge"></div>
+          </div>
+          <div class="item gaugeGorkem">
+            <div id="gorkem-gauge"></div>
+          </div>
+          <div class="item gaugeGorkem">
+             <div id="size-gauge"></div>
+          </div>
+          <div class="item gaugeGorkem">
+            <div id="little-gauge"></div>
+         </div>
+         <div class="item gaugeGorkem">
+          <div id="temperaturs-gauge"></div>
         </div>
+      
       </main>
       <div class="right">
         <div class="top">
@@ -111,21 +142,7 @@
           </div>
         </div>
         <!-- End of top -->
-        <div class="gauge-charts">
-          <h2>Gauge Charts</h2>
-          <div class="item">
-            <div id="temperature-gauge"></div>
-          </div>
-          <div class="item">
-            <div id="humidity-gauge"></div>
-          </div>
-          <div class="item">
-            <div id="pressure-gauge"></div>
-          </div>
-          <div class="item">
-            <div id="altitude-gauge"></div>
-          </div>
-        </div>
+       
       </div>
     </div>
     <script type="module" src="./index.js"></script>
