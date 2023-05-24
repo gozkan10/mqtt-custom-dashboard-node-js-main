@@ -214,7 +214,10 @@ aside .sidebar a:hover span {
 /************* main ******************/
 main {
   margin-top: 1.4rem;
-}
+  position: absolute;  /**** test *****/
+  right: 200px;       /**** test *****/
+  left: 250px;          /**** test *****/
+} 
 
 main .insights {
   display: grid;
@@ -298,11 +301,16 @@ main .histories h2 {
 /* ********RIGHT ********** */
 .right {
   margin-top: 1.4rem;
+  width: 4%;
+  height: 100%;
+  position: absolute;
+  right: 0px;
+
 }
 .right .top {
   display: flex;
   justify-content: end;
-  gap: 2rem;
+  gap: 2rem;  /* irgf  2rem*/
 }
 .right .top button {
   display: none;
