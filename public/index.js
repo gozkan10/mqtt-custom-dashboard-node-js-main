@@ -55,17 +55,30 @@ var temperatureHistoryDiv = document.getElementById("temperature-history");
 var humidityHistoryDiv = document.getElementById("humidity-history");
 var pressureHistoryDiv = document.getElementById("pressure-history");
 var altitudeHistoryDiv = document.getElementById("altitude-history");
+var gorkemHistoryDiv = document.getElementById("gorkem-history");
+var sizeHistoryDiv = document.getElementById("size-history");
+var littleHistoryDiv = document.getElementById("little-history");
+var temperatursHistoryDiv = document.getElementById("temperaturs-history");
+
 
 var temperatureGaugeDiv = document.getElementById("temperature-gauge");
 var humidityGaugeDiv = document.getElementById("humidity-gauge");
 var pressureGaugeDiv = document.getElementById("pressure-gauge");
 var altitudeGaugeDiv = document.getElementById("altitude-gauge");
+var gorkemGaugeDiv = document.getElementById("gorkem-gauge");
+var sizeGaugeDiv = document.getElementById("size-gauge");
+var littleGaugeDiv = document.getElementById("little-gauge");
+var temperatursGaugeDiv = document.getElementById("temperaturs-gauge");
 
 const historyCharts = [
   temperatureHistoryDiv,
   humidityHistoryDiv,
   pressureHistoryDiv,
   altitudeHistoryDiv,
+  gorkemHistoryDiv,
+  sizeHistoryDiv,
+  littleHistoryDiv,
+  temperatursHistoryDiv,
 ];
 
 const gaugeCharts = [
@@ -73,6 +86,10 @@ const gaugeCharts = [
   humidityGaugeDiv,
   pressureGaugeDiv,
   altitudeGaugeDiv,
+  gorkemGaugeDiv,
+  sizeGaugeDiv,
+  littleGaugeDiv,
+  temperatursGaugeDiv,
 ];
 
 // History Data
@@ -104,6 +121,36 @@ var altitudeTrace = {
   mode: "lines+markers",
   type: "line",
 };
+  var gorkemTrace = {
+    x: [],
+    y: [],
+    name: "Gorkem",
+    mode: "lines+markers",
+    type: "line",
+  
+};
+var sizeTrace = {
+  x: [],
+  y: [],
+  name: "Size",
+  mode: "lines+markers",
+  type: "line",
+};
+var littleTrace = {
+  x: [],
+  y: [],
+  name: "Little",
+  mode: "lines+markers",
+  type: "line",
+};
+var temperatursTrace = {
+  x: [],
+  y: [],
+  name: "Temperaturs",
+  mode: "lines+markers",
+  type: "line",
+};
+
 
 var temperatureLayout = {
   autosize: true,
@@ -132,6 +179,7 @@ var temperatureLayout = {
     autorange: true,
   },
 };
+
 var humidityLayout = {
   autosize: true,
   title: {
@@ -204,6 +252,105 @@ var altitudeLayout = {
     linecolor: chartAxisColor,
   },
 };
+var gorkemLayout = {
+  autosize: true,
+  title: {
+    text: "gorkem",
+  },
+  font: {
+    size: 12,
+    color: chartFontColor,
+    family: "poppins, san-serif",
+  },
+  colorway: ["#05AD86"],
+  margin: { t: 40, b: 40, l: 30, r: 30, pad: 0 },
+  plot_bgcolor: chartBGColor,
+  paper_bgcolor: chartBGColor,
+  xaxis: {
+    color: chartAxisColor,
+    linecolor: chartAxisColor,
+    gridwidth: "2",
+  },
+  yaxis: {
+    color: chartAxisColor,
+    linecolor: chartAxisColor,
+  },
+}; 
+var sizeLayout = {
+  autosize: true,
+  title: {
+    text: "size",
+  },
+  font: {
+    size: 12,
+    color: chartFontColor,
+    family: "poppins, san-serif",
+  },
+  colorway: ["#05AD86"],
+  margin: { t: 40, b: 40, l: 30, r: 30, pad: 0 },
+  plot_bgcolor: chartBGColor,
+  paper_bgcolor: chartBGColor,
+  xaxis: {
+    color: chartAxisColor,
+    linecolor: chartAxisColor,
+    gridwidth: "2",
+  },
+  yaxis: {
+    color: chartAxisColor,
+    linecolor: chartAxisColor,
+  },
+}; 
+var littleLayout = {
+  autosize: true,
+  title: {
+    text: "little",
+  },
+  font: {
+    size: 12,
+    color: chartFontColor,
+    family: "poppins, san-serif",
+  },
+  colorway: ["#05AD86"],
+  margin: { t: 40, b: 40, l: 30, r: 30, pad: 0 },
+  plot_bgcolor: chartBGColor,
+  paper_bgcolor: chartBGColor,
+  xaxis: {
+    color: chartAxisColor,
+    linecolor: chartAxisColor,
+    gridwidth: "2",
+  },
+  yaxis: {
+    color: chartAxisColor,
+    linecolor: chartAxisColor,
+  },
+}; 
+var temperatursLayout = {
+  autosize: true,
+  title: {
+    text: "Temperaturs",
+  },
+  font: {
+    size: 12,
+    color: chartFontColor,
+    family: "poppins, san-serif",
+  },
+  colorway: ["#05AD86"],
+  margin: { t: 40, b: 40, l: 30, r: 30, pad: 10 },
+  plot_bgcolor: chartBGColor,
+  paper_bgcolor: chartBGColor,
+  xaxis: {
+    color: chartAxisColor,
+    linecolor: chartAxisColor,
+    gridwidth: "2",
+    autorange: true,
+  },
+  yaxis: {
+    color: chartAxisColor,
+    linecolor: chartAxisColor,
+    gridwidth: "2",
+    autorange: true,
+  },
+};
 
 var config = { responsive: true, displayModeBar: false };
 
@@ -218,6 +365,10 @@ window.addEventListener("load", (event) => {
   Plotly.newPlot(humidityHistoryDiv, [humidityTrace], humidityLayout, config);
   Plotly.newPlot(pressureHistoryDiv, [pressureTrace], pressureLayout, config);
   Plotly.newPlot(altitudeHistoryDiv, [altitudeTrace], altitudeLayout, config);
+  Plotly.newPlot(gorkemHistoryDiv, [gorkemTrace], gorkemLayout, config);
+  Plotly.newPlot(sizeHistoryDiv, [sizeTrace], sizeLayout, config);
+  Plotly.newPlot(littleHistoryDiv, [littleTrace], littleLayout, config);
+  Plotly.newPlot(temperaturesHistoryDiv, [temperaturesTrace], temperaturesLayout, config);
 //HASAN
   // // Get MQTT Connection
   // fetchMQTTConnection();
@@ -308,7 +459,99 @@ var altitudeData = [
       axis: { range: [null, 150] },
       steps: [
         { range: [0, 50], color: "lightgray" },
-        { range: [50, 100], color: "gray" },
+        { range: [50, 100], color: "orange" },
+      ],
+      threshold: {
+        line: { color: "red", width: 4 },
+        thickness: 0.75,
+        value: 30,
+      },
+    },
+  },
+];
+
+var gorkemData = [
+  {
+    domain: { x: [0, 1], y: [0, 1] },
+    value: 0,
+    title: { text: "Dashboard" },
+    type: "indicator",
+    mode: "gauge+number+delta",
+    delta: { reference: 60 },
+    gauge: {
+      axis: { range: [null, 2000] },
+      steps: [
+        { range: [0, 70], color: "lightgray" },
+        { range: [75, 150], color: "RED" },
+      ],
+      threshold: {
+        line: { color: "red", width: 4 },
+        thickness: 0.75,
+        value: 30,
+      },
+    },
+  },
+];
+
+var sizeData = [
+  {
+    domain: { x: [0, 1], y: [0, 1] },
+    value: 0,
+    title: { text: "Size" },
+    type: "indicator",
+    mode: "gauge+number+delta",
+    delta: { reference: 10 },
+    gauge: {
+      axis: { range: [null, 200] },
+      steps: [
+        { range: [10, 60], color: "lightgray" },
+        { range: [10, 40], color: "RED" },
+      ],
+      threshold: {
+        line: { color: "red", width: 4 },
+        thickness: 0.75,
+        value: 30,
+      },
+    },
+  },
+];
+
+var littleData = [
+  {
+    domain: { x: [0, 1], y: [0, 1] },
+    value: 0,
+    title: { text: "Little" },
+    type: "indicator",
+    mode: "gauge+number+delta",
+    delta: { reference: 10 },
+    gauge: {
+      axis: { range: [null, 200] },
+      steps: [
+        { range: [10, 60], color: "lightgray" },
+        { range: [10, 40], color: "RED" },
+      ],
+      threshold: {
+        line: { color: "red", width: 4 },
+        thickness: 0.75,
+        value: 30,
+      },
+    },
+  },
+];
+
+var temperatursData = [
+  {
+    domain: { x: [0, 1], y: [0, 1] },
+    value: 0,
+    title: { text: "Temperatures" },
+    type: "indicator",
+    mode: "gauge+number+delta",
+    delta: { reference: 30 },
+    gauge: {
+      axis: { range: [null, 50] },
+      steps: [
+        { range: [0, 20], color: "lightgray" },
+        { range: [20, 30], color: "blue" },
       ],
       threshold: {
         line: { color: "red", width: 4 },
@@ -325,6 +568,10 @@ Plotly.newPlot(temperatureGaugeDiv, temperatureData, layout);
 Plotly.newPlot(humidityGaugeDiv, humidityData, layout);
 Plotly.newPlot(pressureGaugeDiv, pressureData, layout);
 Plotly.newPlot(altitudeGaugeDiv, altitudeData, layout);
+Plotly.newPlot(gorkemGaugeDiv, gorkemData, layout);
+Plotly.newPlot(sizeGaugeDiv, sizeData, layout);
+Plotly.newPlot(littleGaugeDiv, littleData, layout);
+Plotly.newPlot(temperatursGaugeDiv, temperatursData, layout);
 
 // Will hold the arrays we receive from our BME280 sensor
 // Temperature
@@ -339,7 +586,18 @@ let newPressureYArray = [];
 // Altitude
 let newAltitudeXArray = [];
 let newAltitudeYArray = [];
-
+// Gorkem
+let newGorkemXArray = [];
+let newGorkemYArray = [];
+// Size
+let newSizeXArray = [];
+let newSizeYArray = [];
+// Little
+let newLittleXArray = [];
+let newLittleYArray = [];
+// Temperaturs
+let newTempsXArray = [];
+let newTempsYArray = [];
 // The maximum number of data points displayed on our scatter/line graph
 let MAX_GRAPH_POINTS = 12;
 let ctr = 0;
@@ -408,9 +666,10 @@ function dnabt(){
     let pressure = 832;
     //let altitude = Number(jsonResponse.altitude).toFixed(2);
     let altitude = 52;
-    updateBoxes(temperature, humidity, pressure, altitude);
+    //let gorkem = Number(jsonResponse.gorkem).toFixed(2); 
+    updateBoxes(temperature, humidity, pressure, altitude, gorkem, size, little, temperaturs,),
   
-    updateGauge(temperature, humidity, pressure, altitude);
+    updateGauge(temperature, humidity, pressure, altitude, gorkem, size, little, temperaturs,);
   
     // Update Temperature Line Chart
     updateCharts(
@@ -441,21 +700,57 @@ function dnabt(){
       newAltitudeYArray,
       altitude
     );
+    //Update Gorkem Line Chart
+    updateCharts(
+      gorkemHistoryDiv,
+      newGorkemXArray,
+      newGorkemYArray,
+      gorkem      
+    );
+    //Update Size Line Chart
+    updateCharts(
+      sizeHistoryDiv,
+      newSizeXArray,
+      newSizeYArray,
+      size      
+    );
+      //Update Little Line Chart
+      updateCharts(
+        littleHistoryDiv,
+        newLittleXArray,
+        newLittleYArray,
+        size      
+      );
+       // Update Temperaturs Line Chart
+    updateCharts(
+      temperatursHistoryDiv,
+      newTempsXArray,
+      newTempsYArray,
+      temperaturs
+    );
 }
 
 dnabt();
 
-function updateBoxes(temperature, humidity, pressure, altitude) {
+function updateBoxes(temperature, humidity, pressure, altitude, gorkem, size, little, temperaturs, precipitation,) {
   let temperatureDiv = document.getElementById("temperature");
   let humidityDiv = document.getElementById("humidity");
   let pressureDiv = document.getElementById("pressure");
   let altitudeDiv = document.getElementById("altitude");
-
+  let gorkemDiv = document.getElementById("gorkem");
+  let sizeDiv = document.getElementById("size");
+  let littleDiv = document.getElementById("little");
+  let temperatursDiv = document.getElementById("temperaturs");
+  
   temperatureDiv.innerHTML = temperature + " C";
   humidityDiv.innerHTML = humidity + " %";
   pressureDiv.innerHTML = pressure + " hPa";
   altitudeDiv.innerHTML = altitude + " m";
-}
+  gorkemDiv.innerHTML = gorkem + "g";
+  sizeDiv.innerHTML = size + "s";
+  littleDiv.innerHTML = little + "l";
+  temperatursDiv.innerHTML = temperaturs + " v";
+ }
 
 
 ///// TEST//////////
@@ -493,7 +788,7 @@ function testH1(){
 
 
 
-function updateGauge(temperature, humidity, pressure, altitude) {
+function updateGauge(temperature, humidity, pressure, altitude, gorkem, size, little, temperaturs, precipitation,) {
   var temperature_update = {
     value: temperature,
   };
@@ -506,10 +801,27 @@ function updateGauge(temperature, humidity, pressure, altitude) {
   var altitude_update = {
     value: altitude,
   };
+  var gorkem_update = {
+    value: gorkem,
+  };
+  var size_update = {
+    value: size,
+  };
+  var little_update = {
+    value: little,
+  };
+  var temperaturs_update = {
+    value: temperaturs,
+  };
+ 
   Plotly.update(temperatureGaugeDiv, temperature_update);
   Plotly.update(humidityGaugeDiv, humidity_update);
   Plotly.update(pressureGaugeDiv, pressure_update);
   Plotly.update(altitudeGaugeDiv, altitude_update);
+  Plotly.update(gorkemGaugeDiv, gorkem_update);
+  Plotly.update(sizeGaugeDiv, size_update);
+  Plotly.update(littleGaugeDiv, little_update);
+  Plotly.update(temperatursGaugeDiv, temperaturs_update);
 }
 
 function updateCharts(lineChartDiv, xArray, yArray, sensorRead) {
